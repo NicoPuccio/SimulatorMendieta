@@ -6,6 +6,8 @@ function ctorSimulator()
      next: next,
      execute: execute,
      loadInstructions: loadInstructions,
+     framePointer: 0,
+     globals:[],
      instructions:[],
      pc:0
   };
@@ -155,6 +157,32 @@ function ctorSimulator()
           throw "TO DO";
         }
         break;
+        case 'write_local':
+        {
+          throw "TO DO";
+        }
+        break;
+        case 'prim_read_pin':
+        {
+          /*let pin = simulator.stack.pop();
+          simulator.stack.push(pin);*/
+          throw "TO DO";
+        }
+        break;
+        case 'prim_write_pin':
+        {
+          /*let pin = simulator.stack.pop();
+          let value = simulator.stack.pop();
+          simulator.pins[pin] =value;*/
+          throw "TO DO";
+        }
+        break;
+        case 'prim_toggle_pin':
+        {
+          throw "TO DO";
+        }
+        break;
+
       default:
     throw "Missing instruction "+instruction.op_code;
 

@@ -2,8 +2,17 @@
   <head>
   </head>
   <body style="">
+    <svg width="1000" height="500" id="svg">
+      <circle cx="20" cy="20" r="20" fill="black" id="circle"> </circle>
+    </svg>
+
     <script src="Simulator.js" type="text/javascript"></script>
     <script type="text/javascript">
+
+      var svg = document.getElementById("svg");
+
+      //svg.getElementById("circle").setAttribute("fill", "red");
+
       var sim = ctorSimulator();
       var toggle = [{op_code:'toggle', arg: 2}];
       var onOff=[{op_code:"turn_on", arg:2},{op_code:"turn_off", arg:2}];
@@ -13,8 +22,10 @@
 
     var jz = [ {op_code:"turn_on", arg:2},{op_code: "read_pin", arg: 0}, {op_code: "jz", arg: 1}, {op_code: "turn_off", arg: 2}];
     var jnz = [ {op_code:"turn_on", arg:2},{op_code: "read_pin", arg: 1}, {op_code: "jnz", arg: 1}, {op_code: "turn_off", arg: 2}];
-    var jne = [ {op_code:"turn_on", arg:2},{op_code: "read_pin", arg: 0},{op_code: "read_pin", arg: 1}, {op_code: "jgt", arg: 1}, {op_code: "turn_off", arg: 2}];
+    var jne = [ {op_code:"turn_on", arg:0},{op_code: "read_pin", arg: 1},{op_code: "read_pin", arg: 1}, {op_code: "jgt", arg: 1}, {op_code: "turn_off", arg: 2}];
     /* SEARCH FOR DOM / BUSQUEMOS DOM*/
+    window.onload = ()=>{sim.drawCircles(svg, 20);}
     </script>
+
   </body>
 </html>

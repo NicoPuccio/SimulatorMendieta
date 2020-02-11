@@ -9,7 +9,8 @@ function ctorSimulator()
      framePointer: 0,
      globals:[],
      instructions:[],
-     pc:0
+     pc:0,
+     drawCircles: drawCircles
   };
 
   //simulator.pins.forEach((item) => console.log(item));
@@ -20,6 +21,35 @@ function ctorSimulator()
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
+
+  function drawCircles(target,radius)
+{
+	target.innerHTML="";
+	let x= 0;
+	for( let i=0;i<simulator.pins.length;i++)
+	{
+		x+=radius*2;
+		let c =  document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+		c.setAttribute("fill", "blue");
+		c.setAttribute("cx", x);
+		c.setAttribute("cy", radius);
+		c.setAttribute("r", radius);
+		target.appendChild(c);
+
+		setInterval(()=>{
+			if(sim.pins[i]>0.5)
+			{
+					c.setAttribute("fill", "chartreuse");
+
+			}else{
+					c.setAttribute("fill", "black");
+
+			}
+
+		},50);
+	}
+}
+
 
   function loadInstructions(newIns)
   {
@@ -188,6 +218,7 @@ function ctorSimulator()
 
     }
   }
+
   //setInterval(changeRandomPinValue, 1000);
   return simulator;
 };
